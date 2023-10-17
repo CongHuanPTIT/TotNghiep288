@@ -1,13 +1,15 @@
-<!--<We use Bootstrap framework for HTML/CSS/Javascript programming>-->
+<!--Django Crispy forms-->
 {% extends 'videos/base.html' %}
-{% load crispy_form_tags %}
+{% load crispy_forms_tags %}
 
 {% block content %}
 <div class="container mb-5">
     <div class="row justify-content-center">
         <div class="col-md-6 col-sm-12 col-xs-12">
+            <!-- Divide element base on screen size: Medium/Large/Extra large: 6/12 parts of screen
+                                                     Small/Extra small: Full size-->
             <form method="post" enctype="multipart/form-data">
-                {% csrf_token %}
+                {% csrf_token %} <!-- Cross-Site Requets Forgery, protect against malicious use. Required on forms. -->
                 <legend class="border-bottom mb-4">Upload video</legend>
                 {{ form | crispy }}
                 <button class="btn btn-outline-info btn-block mt-3">Submit</button>
