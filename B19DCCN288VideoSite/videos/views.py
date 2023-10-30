@@ -26,7 +26,7 @@ class DetailVideo(DetailView):
 class UpdateVideo(UpdateView):
     model = Video
     fields = ['title', 'description', 'thumbnail']
-    template_name = 'videos/create_video.html'
+    template_name = 'videos/update_video.html'
 
     def get_success_url(self):
         return reverse('video-detail', kwargs={'pk': self.object.pk})
