@@ -1,0 +1,20 @@
+<!--Django Crispy forms-->
+{% extends 'videos/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container mb-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-sm-12 col-xs-12">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <legend class="border-bottom mb-4">Upload video</legend>
+                {{ form | crispy }}
+                <div class="col-md-4 ml-auto">
+                    <button class="btn btn-outline-primary btn-block mt-3">Update</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}
