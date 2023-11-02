@@ -1,0 +1,36 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="{% url 'index' %}">B19Tube288</a>
+    <button class="navbar-toggler" type="button"
+            data-toggle="collapse" data-target="#navbarContent"
+            aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarContent">
+        <ul class="navbar-nav mr-auto"></ul>
+        <ul class="navbar-nav">
+            {% if user.is_authenticated %}
+                <!-- If there is a logged in user, the navigation bar displays differently-->
+                <li class="nav-item">
+                    <p class="mt-2 mr-4">Welcome, {{ user }}</p>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'video_create' %}">Upload video</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'account_email' %}">Email management</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'account_logout' %}">Sign out</a>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'account_signup' %}">Sign up</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'account_login' %}">Sign in</a>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>

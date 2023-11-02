@@ -17,10 +17,13 @@
         <link href="https://unpkg.com/video.js@7/dist/video-js.min.css" rel="stylesheet"/>
         <link href="https://vjs.zencdn.net/7.7.6/video-js.css" rel="stylesheet"/>
 
+        <link rel="stylesheet" type="text/css" href="/media/css/style.css">
+
         <!-- Script below support IE8 (for Video.js versions prior to v7) -->
         <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
     </head>
     <body>
+        {% include 'videos/navigation_bar.html' %}
         {% block content %}
         {% endblock content %}
 
