@@ -9,14 +9,14 @@
 
 {% block content %}
     <h1>{% trans "Sign Out" %}</h1>
-    <p>{% trans 'Are you sure you want to sign out?' %}</p>
+    <p>{% trans 'Signing out of your account?' %}</p>
 
     <form method="post" action="{% url 'account_logout' %}">
         {% csrf_token %}
         {% if redirect_field_value %}
             <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
         {% endif %}
-        <button class="btn btn-outline-info btn-block" type="submit">
+        <button class="btn btn-outline-secondary btn-block col-md-4 mr-auto mt-5" type="submit">
             {% trans 'Sign Out' %}
         </button>
     </form>

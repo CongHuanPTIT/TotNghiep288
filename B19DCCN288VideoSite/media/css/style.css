@@ -1,0 +1,71 @@
+.social-share-icons {
+    font-size: 3rem;
+    transition: 0.5s;
+}
+/* REM units used in CSS, 1rem = 16px */
+
+.social-share-icons:hover {
+    cursor: pointer;
+    opacity: 0.7;
+    transition: 0.5s;
+}
+
+.twitter-social-color {
+    color: #1DA1F2;
+}
+
+.facebook-social-color {
+    color: #4267B2;
+}
+
+.reddit-social-color {
+    color: #FF4500;
+}
+
+.video-icons {
+    font-size: 1.6rem;
+    transition: 0.5s;
+}
+
+.video-icons:hover {
+    cursor: pointer;
+    opacity: 0.7;
+    transition: 0.5s;
+}
+
+.icon-color {
+    color: #7F7F7F;
+    transition: 0.5s;
+}
+
+.icon-color:hover {
+    color: #0000FF;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: 0.5s;
+}
+
+.video-uploader {
+    color: #ADADAD;
+    font-weight: 750;
+    transition: 0.5s;
+}
+
+.video-uploader:hover {
+    cursor: pointer;
+    color: #ADADAD;
+    font-weight: 750;
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+.link-text {
+    color: #7F7F7F;
+    transition: 0.5s;
+}
+
+.link-text:hover {
+    color: #000000;
+    text-decoration: none;
+    transition: 0.5s;
+}
