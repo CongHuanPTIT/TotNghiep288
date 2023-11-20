@@ -1,0 +1,43 @@
+{% extends "videos/base.html" %}
+<title>{{ member.user.username }}'s profile</title>
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="card col-md-6 col-sm-12 col-xs-12 d-flex flex-row align-items-center p-3 shadow">
+            <img class="rounded-circle mr-4" height="200" width="200" src="{{ member.profile_image.url }}">
+            <h1>{{ member.user.username }}</h1>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mt-5">
+        <div class="card col-md-6 col-sm-12 col-xs-12 p-3 shadow">
+            <h5>Name: {{ member.name }}</h5>
+            <h5>Date of birth: {{ member.date_of_birth }}</h5>
+            <h5>Introduction: {{ member.other }}</h5>
+            {% if request.user == member.user %}
+                <a href="{% url 'update_member_info' member.pk %}">
+                    <button class="btn btn-outline-info btn-block col-md-4">
+                        <ion-icon name="create-outline"></ion-icon>
+                        Update profile
+                    </button>
+                </a>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="row justify-content-center my-5"> <!-- my => Setting margin for top and bottom -->
+        {% for video in member_videos %}
+        <div class="card col-md-3 col-sm-12 col-xs-12 p-3 shadow my-3">
+            <img src="{{ video.thumbnail.url }}" width="256" height="144" class="card-img-top pt-2" alt="thumbnail">
+                <div class="card-body">
+                    <h5 class="card-title text-left">{{ video.title }}</h5>
+                    <p class="card-text text-muted text-left">
+                        <span>{{ video.date_posted | date:"M d, Y" }}</span>
+                    </p>
+                    <a href="{% url 'video_detail' video.pk %}" class="stretched-link"></a>
+                </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

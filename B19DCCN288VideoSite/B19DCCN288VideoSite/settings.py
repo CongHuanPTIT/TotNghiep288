@@ -44,6 +44,7 @@ ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 INSTALLED_APPS = [
     'videos',
+    'member',
     'crispy_forms',
     'corsheaders',
     'django.contrib.admin',
@@ -155,3 +156,6 @@ CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOWED_ORIGINS = [
     'http://127.0.0.1:8000',
 ]
+
+# Signup form additional information
+ACCOUNT_SIGNUP_FORM_CLASS = 'member.forms.MemberForm'

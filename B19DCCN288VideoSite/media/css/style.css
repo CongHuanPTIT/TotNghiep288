@@ -24,7 +24,6 @@
 
 .video-icons {
     font-size: 1.6rem;
-    transition: 0.5s;
 }
 
 .video-icons:hover {
@@ -35,7 +34,6 @@
 
 .icon-color {
     color: #7F7F7F;
-    transition: 0.5s;
 }
 
 .icon-color:hover {
@@ -48,7 +46,6 @@
 .video-uploader {
     color: #ADADAD;
     font-weight: 750;
-    transition: 0.5s;
 }
 
 .video-uploader:hover {
@@ -61,7 +58,6 @@
 
 .link-text {
     color: #7F7F7F;
-    transition: 0.5s;
 }
 
 .link-text:hover {
