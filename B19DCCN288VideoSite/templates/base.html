@@ -23,22 +23,9 @@
             {% endfor %}
         </div>
         {% endif %}
-<!-- Replace the Menu below with the navigation bar in videos/templates -->
-<!--        <div>-->
-<!--            <strong class="pl-3">Menu</strong>-->
-<!--            <ul class="nav flex-column">-->
-<!--                {% if user.is_authenticated %}-->
-<!--                <li class="nav-item"><a class="nav-link" href="{% url 'account_email' %}">Change E-mail</a></li>-->
-<!--                <li class="nav-item"><a class="nav-link" href="{% url 'account_logout' %}">Sign Out</a></li>-->
-<!--                {% else %}-->
-<!--                <li class="nav-item"><a class="nav-link" href="{% url 'account_login' %}">Sign In</a></li>-->
-<!--                <li class="nav-item"><a class="nav-link" href="{% url 'account_signup' %}">Sign Up</a></li>-->
-<!--                {% endif %}-->
-<!--            </ul>-->
-<!--        </div>-->
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-md-8 col-sm-12 col-xs-12">
+                <div class="col-md-8 col-sm-12 col-xs-12 my-5">
                     {% block content %}
                     {% endblock content %}
                 </div>

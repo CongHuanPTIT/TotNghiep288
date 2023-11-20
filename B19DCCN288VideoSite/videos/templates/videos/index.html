@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row justify-content-left">
             {% for object in object_list %}
-            <div class="card col-md-3 col-sm-12 col-xs-12 mr-md-2 mt-5 p-3 border-0">
+            <div class="card col-md-3 col-sm-12 col-xs-12 mt-5 p-3 border-0">
                 <a href="{% url 'video_detail' object.pk %}">
                     <img src="/media/{{ object.thumbnail }}" width="256" height="144">
                 </a>
