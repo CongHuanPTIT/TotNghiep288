@@ -7,7 +7,9 @@
             <div class="col-md-6 col-sm-12 col-xs-12">
                 <form method="post" enctype="multipart/form-data">
                     {% csrf_token %}
-                    <legend class="border-bottom mb-4">Update your channel</legend>
+                    <legend class="border-bottom mb-4"><b>Update your channel</b></legend>
+                    <p>Please type your date of birth according to the format given (year-month-date).</p>
+                    <p>We're sorry for the inconvenience.</p>
                     {{ form | crispy }}
                     <div class="col-md-4 ml-auto">
                         <button class="btn btn-outline-info btn-block mt-3">Update</button>

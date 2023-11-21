@@ -1,4 +1,5 @@
 {% extends 'videos/base.html' %}
+{% load crispy_forms_tags %}
 
 {% block content %}
     <div class="container">
@@ -93,5 +94,39 @@
                 <ion-icon name="trash-outline"></ion-icon>
             </a>
         {% endif %}
+    </div>
+    <div class="container mt-5 mb-5">
+        <div class="row mt-3">
+            <div class="col-md-8 col-sm-12 col-xs-12">
+                {% if user.is_authenticated %}
+                    <form method="post">
+                        {% csrf_token %}
+                        <legend class="border-bottom md-4">Comments</legend>
+                        {{ form | crispy }}
+                        <div class="col-lg-2 col-md-4 mr-auto">
+                            <button class="btn btn-outline-success btn-block">Post</button>
+                        </div>
+                    </form>
+                {% else %}
+                    <a class="btn btn-outline-info btn-block" href="{% url 'account_login' %}">
+                        Sign in to post a comment.
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+        {% for comment in comments %}
+            <div class="row mt-3">
+                <div class="col-md-8 col-sm-12 col-xs-12 border-bottom">
+                    <h5>{{ comment.user }}</h5>
+                    <p>{{ comment.comment }}</p>
+                </div>
+                {% if comment.user == request.user %}
+                    <form method="post">
+                        {% csrf_token %}
+                        <button class="btn btn-outline-danger btn-block ml-auto">Delete</button>
+                    </form>
+                {% endif %}
+            </div>
+        {% endfor %}
     </div>
 {% endblock content %}
