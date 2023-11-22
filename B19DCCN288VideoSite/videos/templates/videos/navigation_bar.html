@@ -7,6 +7,14 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarContent">
+        <form class="ml-5 form-inline my-2 d-flex flex-row w-50" method="get" action="{% url 'search_video' %}">
+            <input class="form-control rounded w-50" type="search" name="q"
+                   placeholder="Search video..." aria-label="Search"
+                   value="{{ request.get.q }}">
+            <button class="form-control border bg-dark text-white" type="submit">
+                <ion-icon name="search-outline"></ion-icon>
+            </button>
+        </form>
         <ul class="navbar-nav mr-auto"></ul>
         <ul class="navbar-nav">
             {% if user.is_authenticated %}
