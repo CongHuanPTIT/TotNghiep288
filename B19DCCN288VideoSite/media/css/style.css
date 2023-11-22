@@ -65,3 +65,17 @@
     text-decoration: none;
     transition: 0.5s;
 }
+
+.link-topic {
+    color: #7F7F7F;
+}
+
+.link-topic:hover {
+    color: #000000;
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+.search-btn {
+    color: #FFFFFF; !important;
+}

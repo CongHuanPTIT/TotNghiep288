@@ -1,11 +1,11 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.shortcuts import reverse, render, redirect, get_object_or_404
+from django.shortcuts import reverse, render
 from django.views import View
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.list import ListView
-
+from django.db.models import Q
 from .forms import CommentForm
-from .models import Video, Comment
+from .models import Video, Comment, Topic
 
 
 # Create your views here.
@@ -17,7 +17,7 @@ from .models import Video, Comment
 class Index(ListView):
     model = Video
     template_name = 'videos/index.html'
-    order_by = '-date_posted'  # Date posted sort by negative => Most recent uploads on top
+    ordering = '-date_posted'  # Date posted sort by negative => Most recent uploads on top
 
 
 class CreateVideo(LoginRequiredMixin, CreateView):
@@ -43,9 +43,11 @@ class DetailVideo(View):
         video = Video.objects.get(pk=pk)
         form = CommentForm()
         comments = Comment.objects.filter(video=video).order_by('-created_on')
+        topics = Video.objects.filter(topic=video.topic)[:20]
         context = {
             'object': video,
             'comments': comments,
+            'topics': topics,
             'form': form
         }
         return render(request, 'videos/detail_video.html', context)
@@ -60,17 +62,23 @@ class DetailVideo(View):
             comment.save()
 
         comments = Comment.objects.filter(video=video).order_by('-created_on')
+        topics = Video.objects.filter(topic=video.topic)[:20]
         context = {
             'object': video,
             'comments': comments,
+            'topics': topics,
             'form': form
         }
         return render(request, 'videos/detail_video.html', context)
 
+    # This function is not working
     def delete(self, request, pk, *args, **kwargs):
         video = Video.objects.get(pk=pk)
-        comment = get_object_or_404(Comment, user=self.request.user)
-        if request.method == 'post':
+        form = CommentForm(request.GET)
+        if form.is_valid():
+            comment = Comment(user=self.request.user,
+                              comment=form.cleaned_data['comment'],
+                              video=video)
             comment.delete()
 
         comments = Comment.objects.filter(video=video).order_by('-created_on')
@@ -104,3 +112,29 @@ class DeleteVideo(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     def test_func(self):
         video = self.get_object()
         return self.request.user == video.uploader
+
+
+class TopicVideo(View):
+    def get(self, request, pk, *args, **kwargs):
+        topic = Topic.objects.get(pk=pk)
+        videos = Video.objects.filter(topic=pk).order_by('-date_posted')
+        context = {
+            'topic': topic,
+            'videos': videos
+        }
+        return render(request, 'videos/similar_videos.html', context)
+
+
+class SearchVideo(View):
+    def get(self, request, *args, **kwargs):
+        query = self.request.GET.get("q")
+        query_list = Video.objects.filter(
+            Q(title__icontains=query) |
+            Q(description__icontains=query) |
+            Q(uploader__username__icontains=query)
+        )
+
+        context = {
+            'query_list': query_list
+        }
+        return render(request, 'videos/search_video.html', context)
