@@ -1,5 +1,6 @@
 {% extends 'videos/base.html' %}
 {% load crispy_forms_tags %}
+{% load custom_filter %}
 
 {% block content %}
     <div class="container">
@@ -15,6 +16,7 @@
                         data-setup='{"playbackRates": [0.5, 1, 1.5, 2],
                                      "fluid": true,
                                      "preload": "auto"'>
+                    <!--Set video time to move from 0:00 instead of to 0:00-->
                     <style type="text/css">
                         .video-js .vjs-time-control{display: block;}
                         .video-js .vjs-remaining-time{display: none;}
@@ -28,10 +30,14 @@
                 </video-js>
                 <h4 class="mt-4">{{ object.title }}</h4>
                 <p>{{ object.date_posted | date:"M d, Y" }}</p>
-                <div class="row">
+                <div class="row mt-3">
                     <div class="col-md-6">
-                        <h5 class="text-dark">Topic</h5>
-                        <a class="link-topic" href="{% url 'topic_list' object.topic.pk %}">{{ object.topic.name }}</a>
+                        <p> Uploaded by
+                            <a class="link-text"
+                               href="{% url 'member' object.uploader.pk|uploader_id %}">
+                                {{ object.uploader }}
+                            </a>
+                        </p>
                     </div>
                     <div class="col-md-6 text-muted text-right">
                         <!-- Button trigger modal -->
@@ -51,7 +57,9 @@
                 <p class="ml-5 mt-3"> {{ object.description }}</p>
             </div>
                 <div class="col-md-4 col-sm-12 col-xs-12 pl-5">
-                    <h4 class="text-left mb-3">Similar videos</h4>
+                    <a class="link-topic" href="{% url 'topic_list' object.topic.pk %}">
+                        <h4 class="text-left mb-3">Similar videos</h4>
+                    </a>
                     {% for topic in topics %}
                         {% if object.pk != topic.pk %}
                             <div class="position-relative d-flex flex-row mb-5 py-2">
@@ -66,14 +74,6 @@
                     {% endfor %}
                 </div>
         </div>
-        {% if object.uploader == user %}
-            <a class="video-icons icon-color" href="{% url 'video_update' object.pk  %}">
-                <ion-icon name="pencil-outline"></ion-icon>
-            </a>
-            <a class="video-icons icon-color" href="{% url 'video_delete' object.pk  %}">
-                <ion-icon name="trash-outline"></ion-icon>
-            </a>
-        {% endif %}
     </div>
     <div class="container mt-5 mb-5">
         <div class="row mt-3">

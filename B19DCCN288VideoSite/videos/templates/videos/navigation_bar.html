@@ -8,7 +8,7 @@
 
     <div class="collapse navbar-collapse" id="navbarContent">
         <form class="ml-5 form-inline my-2 d-flex flex-row w-50" method="get" action="{% url 'search_video' %}">
-            <input class="form-control rounded w-50" type="search" name="q"
+            <input class="form-control rounded w-75" type="search" name="q"
                    placeholder="Search video..." aria-label="Search"
                    value="{{ request.get.q }}">
             <button class="form-control border bg-dark text-white" type="submit">
@@ -20,12 +20,10 @@
             {% if user.is_authenticated %}
                 <!-- If there is a logged in user, the navigation bar displays differently-->
                 <li class="nav-item">
-                    <p>
-                        <a class="nav-link" href="{% url 'member' user.member.pk %}">
-                            <img src="{{ user.member.profile_image.url }}" width="35" height="35"
-                                 class="d-inline-block rounded-circle" alt="profile">
-                        </a>
-                    </p>
+                    <a class="nav-link" href="{% url 'member' user.member.pk %}">
+                        <img src="{{ user.member.profile_image.url }}" width="40" height="40"
+                             class="d-inline-block rounded-circle" alt="profile">
+                    </a>
                 </li>
                 <li class="nav-item mt-2">
                     <a class="nav-link" href="{% url 'video_create' %}">Upload video</a>

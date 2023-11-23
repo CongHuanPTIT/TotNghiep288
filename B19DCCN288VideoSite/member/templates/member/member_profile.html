@@ -1,5 +1,5 @@
 {% extends "videos/base.html" %}
-<title>{{ member.user.username }}'s profile</title>
+
 {% block content %}
 <div class="container">
     <div class="row justify-content-center mt-5">
@@ -13,7 +13,7 @@
         <div class="card col-md-6 col-sm-12 col-xs-12 p-3 shadow">
             <h5>Name: {{ member.name }}</h5>
             <h5>Date of birth: {{ member.date_of_birth }}</h5>
-            <h5>Introduction: {{ member.other }}</h5>
+            <h5 class="mt-4">{{ member.other }}</h5>
             {% if request.user == member.user %}
                 <a href="{% url 'update_member_info' member.pk %}">
                     <button class="btn btn-outline-info btn-block col-md-4">
@@ -34,10 +34,18 @@
                     <p class="card-text text-muted text-left">
                         <span>{{ video.date_posted | date:"M d, Y" }}</span>
                     </p>
-                    <a href="{% url 'video_detail' video.pk %}" class="stretched-link"></a>
+                    <a href="{% url 'video_detail' video.pk %}"></a>
+                    {% if video.uploader == user %}
+                        <a class="video-icons icon-update" href="{% url 'video_update' video.pk  %}">
+                            <ion-icon name="pencil-outline"></ion-icon>
+                        </a>
+                        <a class="video-icons icon-delete" href="{% url 'video_delete' video.pk  %}">
+                            <ion-icon name="trash-outline"></ion-icon>
+                        </a>
+                    {% endif %}
                 </div>
         </div>
         {% endfor %}
     </div>
 </div>
-{% endblock %}
+{% endblock content %}
