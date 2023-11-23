@@ -91,7 +91,7 @@ class DetailVideo(View):
 
 class UpdateVideo(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Video
-    fields = ['title', 'description', 'thumbnail']
+    fields = ['title', 'description', 'thumbnail', 'topic']
     template_name = 'videos/update_video.html'
 
     def get_success_url(self):

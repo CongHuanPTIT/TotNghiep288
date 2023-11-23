@@ -1,4 +1,5 @@
 {% extends 'videos/base.html' %}
+{% load custom_filter %}
 
 {% block content %}
     <div class="container">
@@ -9,10 +10,13 @@
                     <img src="/media/{{ object.thumbnail }}" width="256" height="144">
                 </a>
                 <div class="card-body">
-                    <a class="link-text" href="{% url 'video_detail' object.pk %}">
+                    <a class="text-dark text-decoration-none    " href="{% url 'video_detail' object.pk %}">
                         <h5 class="text-left"> {{ object.title }}</h5>
                     </a>
-                    <p class="text-muted text-left m-0">{{ object.uploader }}</p>
+                    <a class="link-text font-weight-bold"
+                       href="{% url 'member' object.uploader.pk|uploader_id %}">
+                        {{ object.uploader }}
+                    </a>
                     <p class="text-muted text-left">{{ object.date_posted | date:"M d, Y" }}</p>
                 </div>
             </div>

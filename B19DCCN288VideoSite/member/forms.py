@@ -4,10 +4,10 @@ from datetime import datetime
 
 
 class MemberForm(forms.Form):
-    name = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Your name'}), max_length=50, label="Name")
-    date_of_birth = forms.DateField(widget=forms.DateInput(attrs={'type': 'date', 'max': datetime.now().date()}),
-                                    label="Date of birth")
-    other = forms.CharField(widget=forms.Textarea(attrs={'other': 'profile_description'}), label="Introduction")
+    name = forms.CharField(label="Name", widget=forms.TextInput(attrs={'placeholder': 'Your name'}), max_length=50)
+    date_of_birth = forms.DateField(label="Date of birth",
+                                    widget=forms.DateInput(attrs={'type': 'date', 'max': datetime.now().date()}))
+    other = forms.CharField(label="Introduction", widget=forms.Textarea(attrs={'other': 'profile_description'}))
     profile_image = forms.ImageField(required=False, error_messages={'invalid': "Image files only"})
 
     def clean(self):

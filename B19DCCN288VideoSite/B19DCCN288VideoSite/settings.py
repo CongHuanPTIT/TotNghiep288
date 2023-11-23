@@ -46,7 +46,6 @@ INSTALLED_APPS = [
     'videos',
     'member',
     'crispy_forms',
-    'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -151,11 +150,6 @@ MEDIA_URL = '/media/'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 LOGIN_REDIRECT_URL = 'index'
-
-CORS_ALLOW_ALL_ORIGINS = True
-CORS_ALLOWED_ORIGINS = [
-    'http://127.0.0.1:8000',
-]
 
 # Signup form additional information
 ACCOUNT_SIGNUP_FORM_CLASS = 'member.forms.MemberForm'

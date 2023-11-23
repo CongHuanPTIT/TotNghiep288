@@ -15,7 +15,6 @@ class MemberView(View):
             'member': member,
             'member_videos': member_videos
         }
-
         return render(request, 'member/member_profile.html', context)
 
 

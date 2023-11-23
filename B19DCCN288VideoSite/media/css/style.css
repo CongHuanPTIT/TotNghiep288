@@ -1,8 +1,9 @@
+/* REM units used in CSS, 1rem = 16px */
+
 .social-share-icons {
     font-size: 3rem;
     transition: 0.5s;
 }
-/* REM units used in CSS, 1rem = 16px */
 
 .social-share-icons:hover {
     cursor: pointer;
@@ -23,24 +24,21 @@
 }
 
 .video-icons {
+    color: #ADADAD;
     font-size: 1.6rem;
 }
 
 .video-icons:hover {
     cursor: pointer;
-    opacity: 0.7;
     transition: 0.5s;
 }
 
-.icon-color {
-    color: #7F7F7F;
+.icon-update:hover {
+    color: #0064F5;
 }
 
-.icon-color:hover {
-    color: #0000FF;
-    cursor: pointer;
-    opacity: 0.7;
-    transition: 0.5s;
+.icon-delete:hover {
+    color: #F50000;
 }
 
 .video-uploader {
@@ -57,7 +55,7 @@
 }
 
 .link-text {
-    color: #7F7F7F;
+    color: #ADADAD;
 }
 
 .link-text:hover {
@@ -67,15 +65,11 @@
 }
 
 .link-topic {
-    color: #7F7F7F;
+    color: #000000;
 }
 
 .link-topic:hover {
-    color: #000000;
+    color: #7F7F7F;
     text-decoration: none;
     transition: 0.5s;
-}
-
-.search-btn {
-    color: #FFFFFF; !important;
 }

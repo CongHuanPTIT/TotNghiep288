@@ -1,7 +1,8 @@
 {% extends 'videos/base.html' %}
+
 {% block content %}
     <div class="container">
-        <h4 class="mt-3">Videos similar to topic: {{ topic.name }}</h4>
+        <h4 class="mt-3">Other videos with topic: {{ topic.name }}</h4>
         <div class="row justify-content-left">
             {% for video in videos %}
             <div class="card col-md-3 col-sm-12 col-xs-12 mt-5 p-3 border-0">

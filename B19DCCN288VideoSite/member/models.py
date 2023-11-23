@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 
 # Create your models here.
-class Member(models.Model):                                        # One member has one profile. If deleted,
+class Member(models.Model):                                      # One member has one profile. If deleted,
     user = models.OneToOneField(User, on_delete=models.CASCADE)  # the profile will be deleted along with the member
     name = models.CharField(max_length=100, blank=False)
     date_of_birth = models.DateField(blank=False)
